@@ -1,15 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ku {
+            width: 100%;
+            display: flex;
+            background-color: lightseagreen;
+        }
+
+        .data {
+            width: 20%;
+            height: 100vh;
+            color: rgb(101, 36, 36);
+            background-color: lightblue;
+        }
+
+        .data .tou {
+            width: 250px;
+            height: 250px;
+            padding: 45px;
+        }
+
+        .data h3 {
+            padding: 0 30px;
+        }
+
+        .data .tou img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .anli {
+            width: 80%;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .anli .thr {
+            width: 300px;
+            height: 250px;
+        }
+
+        .anli a {
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: blue;
+        }
+
+        .anli .thr .backpho {
+            width: 300px;
+            height: 200px;
+            margin: 15px 0;
+            background-image: url('./imgs/360.png');
+            background-position: center;
+            background-size: cover;
+        }
+
+        .anli .yimei .backpho {
+            width: 300px;
+            height: 200px;
+            margin: 15px 0;
+            background-image: url('./imgs/医美.png');
+            background-position: center;
+            background-size: cover;
+        }
+
+        .anli .qiye .backpho {
+            width: 300px;
+            height: 200px;
+            margin: 15px 0;
+            background-image: url('./imgs/企业.png');
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>案例库</h1>
-    <a href="./360滚动动画/360页面.html">360页面</a>
-    <a href="./医美-Bootstrap/整形练习.html">Bootstrap-医美排版</a>
-    <a href="./企业介绍-Bootstrap/企业介绍.html">Bootstrap-企业介绍排版</a>
+    <div class="ku">
+        <div class="data">
+            <div class="tou">
+                <img src="./imgs/头像.jpg" alt="">
+            </div>
+            <h3>Name : 黄荣俊</h3>
+            <h3>QQ : 2035591287</h3>
+            <h3>WeChat : hrj962464777</h3>
+            <h3>Email : 2035591287@qq.com</h3>
+        </div>
+        <div class="anli">
+            <div class="thr">
+                <div class="backpho"></div>
+                <a href="./360滚动动画/360页面.html" target="_blank">360浏览器页面</a>
+            </div>
+            <div class="yimei">
+                <div class="backpho"></div>
+                <a href="./医美-Bootstrap/整形练习.html" target="_blank">医美-响应式布局</a>
+            </div>
+            <div class="qiye">
+                <div class="backpho"></div>
+                <a href="./企业介绍-Bootstrap/企业介绍.html" target="_blank">企业-响应式布局</a>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
