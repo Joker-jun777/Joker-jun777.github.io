@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .stage {
+            width: 100%;
+            max-width: 580px;
+            height: 100vh;
+            position: relative;
+        }
+
+        .stage .start {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 666;
+            background-color: #b2b2b2;
+            text-align: center;
+        }
+
+        .stage .start h1 {
+            font-size: 36px;
+            color: #fff;
+            height: 50px;
+            margin-top: 60%;
+        }
+
+        .stage .start span {
+            display: block;
+            width: 100px;
+            height: 50px;
+            font-size: 24px;
+            line-height: 50px;
+            margin: 50px auto;
+            background: #4cd964;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .stage .main {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage .main i {
+            width: 90px;
+            height: 90px;
+            background-color: #cccccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage .main i.played {
+            background-color: white;
+        }
+
+        .stage .over {
+            width: 100%;
+            height: 100%;
+            background-color: lightblue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .stage .over h2 {
+            position: absolute;
+            top: 160px;
+            color: white;
+            font-size: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stage .over h3 {
+            position: absolute;
+            top: 280px;
+            left: 100px;
+            color: white;
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stage .score {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .stage .score h2 {
+            font-size: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <section class="start">
+            <h1>别踩白块</h1>
+            <span>开始</span>
+        </section>
+        <section class="main"></section>
+        <section class="score">
+            <h2>0</h2>
+        </section>
+        <section class="over">
+            <h2>GAME OVER</h2>
+        </section>
+    </div>
+
+    <script>
+        var startEl = document.querySelector(".stage .start");
+        var mainEl = document.querySelector(".stage .main");
+        var scoreEl = document.querySelector(".stage .score");
+        var h2 = document.querySelector(".stage .score h2");
+        var overEl = document.querySelector(".stage .over");
+
+
+        var dots = [];
+        var speed = 0.03;
+        var score = 0;
+
+        startEl.onclick = function () {
+            startEl.style.display = "none";
+            console.log("开始");
+            timer();
+        }
+
+        mainEl.onclick = function () {
+            // clearInterval(id);
+            timer();
+            overEl.style.display = "block";
+            console.log("点错了");
+
+            var node = document.createElement("h3");
+            overEl.appendChild(node);
+            node.innerHTML = "分数" + ":" + score;
+        }
+
+        function Dot(y) {
+            this.x = Math.floor(Math.random() * 4);
+            this.y = y;
+
+            this.node = document.createElement("i");
+            this.updateView();
+            mainEl.appendChild(this.node);
+
+            var _this = this;
+            this.node.onclick = function () {
+                var firstUnPlayed = dots.filter(function (dot) {
+                    return !dot.played;
+                })[0];
+                if (this.isSameNode(firstUnPlayed.node)) {
+                    _this.node.classList.add("played");
+                    _this.played = true;
+                    event.stopPropagation();
+
+                    score++;
+                    if (score % 10 === 0) {
+                        speed += 0.01;
+                    }
+
+                    // scoreEl.innerHTML = "";
+                    // scoreEl.innerHTML = score;
+
+                    h2.innerHTML = "";
+                    h2.innerText = score;
+                }
+            }
+        }
+
+        Dot.prototype.move = function () {
+            this.y += speed;
+        };
+
+        Dot.prototype.updateView = function () {
+            this.node.style.left = this.x * 90 + "pX";
+            this.node.style.top = this.y * 90 + "pX";
+        };
+
+        function init() {
+            for (var i = 4; i >= 0; i--) {
+                var d = new Dot(i - 1);
+                dots.push(d);
+            }
+        }
+        init();
+
+        function timer() {
+            var id = setInterval(function () {
+                dots.forEach(function (dot) {
+                    dot.move();
+                    dot.updateView();
+                });
+
+                if (dots[dots.length - 1].y >= 0) {
+                    var d = new Dot(-1);
+                    dots.push(d);
+                }
+
+                var firstUnPlayed = dots.filter(function (dot) {
+                    return !dot.played;
+                })[0];
+                if (firstUnPlayed && (firstUnPlayed.y + 1) * 90 >= 640) {
+                    clearInterval(id);
+                    overEl.style.display = "block";
+
+                    var node = document.createElement("h3");
+                    overEl.appendChild(node);
+                    node.innerHTML = "分数" + ":" + score;
+                }
+
+                var firstPlayed = dots.filter(function (dot) {
+                    return dot.played;
+                })[0];
+                if (firstPlayed && firstPlayed.y * 90 > 640) {
+                    mainEl.removeChild(firstPlayed.node);
+                    dots.splice(dots.indexOf(firstPlayed), 1)
+                }
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

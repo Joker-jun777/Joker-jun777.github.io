@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./my-minireset.css" />
+    <style>
+        ul.stage {
+            width: 500px;
+            height: 500px;
+            background-color: lightblue;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            margin: auto;
+        }
+
+        ul.stage li {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            margin: 5px;
+            color: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .3s;
+        }
+
+        ul.stage li.open {
+            color: white;
+        }
+
+        ul.stage li.equal {
+            color: white;
+            background-color: aqua;
+        }
+
+        ul.stage li i {
+            font-size: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="stage"></ul>
+
+    <script>
+        var stage = document.querySelector(".stage");
+        var icons = [
+            "fa-bar-chart",
+            "fa-car",
+            "fa-bomb",
+            "fa-check-circle-o",
+            "fa-child",
+            "fa-diamond",
+            "fa-database",
+            "fa-rocket"
+        ];
+
+        function doubleArr(arr) {
+            var tmp = [];
+            arr.forEach(function (e) {
+                tmp.push(e);
+                tmp.push(e);
+            });
+            return tmp;
+        }
+
+        function shuffle(arr) {
+            arr.sort(function () {
+                return Math.random() - 0.5;
+            });
+            return arr;
+        }
+
+        var d = doubleArr(icons);
+        var arr = shuffle(shuffle(d));
+        var arr = d;
+
+        arr.forEach(function (icon) {
+            var node = document.createElement("li");
+            node.innerHTML = '<i class="fa ' + icon + '"></i>'
+            stage.appendChild(node);
+
+            node.onclick = function () {
+                if (!this.classList.contains("equal")) {
+                    this.classList.add("open");
+
+                    var openedLis = [];
+                    for (var i = 0; i < stage.children.length; i++) {
+                        if (stage.children[i].classList.contains("open")) {
+                            openedLis.push(stage.children[i]);
+                        }
+                    }
+
+                    if (openedLis.length === 2) {
+                        setTimeout(function () {
+                            openedLis[0].classList.remove("open");
+                            openedLis[1].classList.remove("open");
+
+                            if (openedLis[0].innerHTML === openedLis[1].innerHTML) {
+                                openedLis[0].classList.add("equal");
+                                openedLis[1].classList.add("equal");
+                            }
+                        }, 500);
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>
