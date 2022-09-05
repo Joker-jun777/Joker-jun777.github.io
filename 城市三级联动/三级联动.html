@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            display: flex;
+            text-align: center;
+        }
+
+        .box .box1 {
+            width: 200px;
+            background-color: lightblue;
+        }
+
+        .box .box2 {
+            width: 200px;
+            background-color: lightcoral;
+            display: none;
+        }
+
+        .box .box3 {
+            width: 200px;
+            background-color: lightgreen;
+            display: none;
+        }
+
+        .box ul li {
+            padding: 15px 0;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box1">
+            <h2>省</h2>
+            <ul class="sheng"></ul>
+        </div>
+        <div class="box2">
+            <h2>市</h2>
+            <ul class="shi"></ul>
+        </div>
+        <div class="box3">
+            <h2>区</h2>
+            <ul class="qu"></ul>
+        </div>
+    </div>
+    <script>
+        function getSheng() {
+            $.get("./考试.json", function (res) {
+                $(".sheng").html("");
+                res.forEach(function (e) {
+                    var arr = e.split(":");
+                    // console.log(arr);
+                    if (arr[0].length === 2) {
+                        $(".sheng").append("<li id=" + arr[0] + ">" + arr[1] + "</li>");
+                    }
+                });
+            })
+        }
+        getSheng();
+
+        function getShi(n) {
+            $.get("./考试.json", function (res) {
+                res.forEach(function (e) {
+                    var arr = e.split(":");
+                    // console.log(arr);
+                    if (arr[0].length === 4 && arr[0].slice(0, 2) === n) {
+                        $(".shi").append("<li id=" + arr[0] + ">" + arr[1] + "</li>");
+                    }
+                });
+            })
+        }
+        getShi();
+
+        function getQu(n) {
+            $.get("./考试.json", function (res) {
+                res.forEach(function (e) {
+                    var arr = e.split(":");
+                    // console.log(arr);
+                    if (arr[0].length === 6 && arr[0].slice(0, 4) === n) {
+                        $(".qu").append("<li id=" + arr[0] + ">" + arr[1] + "</li>");
+                    }
+                });
+            })
+        }
+        getQu();
+
+        document.querySelector(".sheng").addEventListener("click", function (e) {
+            var n = e.target.getAttribute("id")
+            getShi(n);
+            $(".box2").css("display", "block");
+            $(".shi").html("");
+            $(".qu").html("");
+            if (e.target.tagName === "LI") {
+                $(e.target).addClass("active").siblings().removeClass("active");
+            }
+        });
+
+        document.querySelector(".shi").addEventListener("click", function (e) {
+            var n = e.target.getAttribute("id");
+            getQu(e.target.getAttribute("id"));
+            $(".box3").css("display", "block");
+            $(".qu").html("");
+            if (e.target.tagName === "LI") {
+                $(e.target).addClass("active").siblings().removeClass("active");
+            }
+        });
+
+        document.querySelector(".qu").addEventListener("click", function (e) {
+            if (e.target.tagName === "LI") {
+                $(e.target).addClass("active").siblings().removeClass("active");
+            }
+        });
+    </script>
+</body>
+
+</html>
