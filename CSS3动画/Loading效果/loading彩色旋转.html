@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <div class="stage">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="text">
+            <span>Loading</span>
+        </div>
+    </div>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        @keyframes bk {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .box .stage {
+            width: 500px;
+            height: 500px;
+            margin: 100px;
+            border-radius: 50%;
+            position: relative;
+            background-image: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+            /* filter: blur(5px); */
+            animation: bk .5s linear infinite;
+        }
+
+        .box .stage::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        .box .stage>div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+        }
+
+        .box .stage div:nth-child(1) {
+            filter: blur(5px);
+        }
+
+        .box .stage div:nth-child(2) {
+            filter: blur(10px);
+        }
+
+        .box .stage div:nth-child(3) {
+            filter: blur(30px);
+        }
+
+        .box .stage div:nth-child(4) {
+            filter: blur(50px);
+        }
+
+        .box .text {
+            display: block;
+            position: relative;
+            text-align: center;
+            margin-top: 30px;
+            color: #14ffe9;
+            animation: bounce 2.5s linear infinite;
+            letter-spacing: 10px;
+        }
+
+        .box .text span {
+            font-size: 36px;
+        }
+
+        @keyframes bounce {
+            0% {
+                top: 0;
+            }
+
+            25% {
+                top: 100px;
+            }
+
+            50% {
+                top: 0;
+            }
+
+            75% {
+                top: 100px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+    </style>
+</body>
+
+</html>
