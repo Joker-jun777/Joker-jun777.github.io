@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>转盘抽奖</title>
+    <style>
+      .zp {
+        width: 560px;
+        height: 560px;
+        background-image: url(./img/bg_lottery.png);
+        position: relative;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .zp .circle {
+        width: 560px;
+        height: 560px;
+        background-image: url(./img/bg_lottery_f.png);
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all 3s ease-in-out;
+      }
+
+      .zp .btn {
+        width: 161px;
+        height: 161px;
+        background-image: url(./img/btn_lottery.png);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -80.5px;
+        margin-top: -80.5px;
+      }
+
+      .zp .btn::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background-image: url(./img/icon_point.png);
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: -34px;
+        margin-left: -23px;
+      }
+
+      .zp .circle .item {
+        width: 560px;
+        height: 560px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .circle .item .content {
+        width: 100px;
+        height: 125px;
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .circle .item .content img {
+        max-width: 60px;
+        height: auto;
+        max-height: 60px;
+        margin-top: 10px;
+      }
+
+      .zp .circle .item:nth-child(1) {
+        transform: rotate(22.5deg);
+      }
+
+      .zp .circle .item:nth-child(2) {
+        transform: rotate(67.5deg);
+      }
+
+      .zp .circle .item:nth-child(3) {
+        transform: rotate(112.5deg);
+      }
+
+      .zp .circle .item:nth-child(4) {
+        transform: rotate(157.5deg);
+      }
+
+      .zp .circle .item:nth-child(5) {
+        transform: rotate(202.5deg);
+      }
+
+      .zp .circle .item:nth-child(6) {
+        transform: rotate(247.5deg);
+      }
+
+      .zp .circle .item:nth-child(7) {
+        transform: rotate(292.5deg);
+      }
+
+      .zp .circle .item:nth-child(8) {
+        transform: rotate(337.5deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="zp">
+      <div class="circle"></div>
+      <div class="btn"></div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      var arr = [
+        {
+          title: "谢谢惠顾",
+          img: "img/lottery_05.png",
+          p: 0.5,
+        },
+        {
+          title: "10元代金券",
+          img: "img/lottery_01.png",
+          p: 0.1,
+        },
+        {
+          title: "20元代金券",
+          img: "img/lottery_02.png",
+          p: 0.1,
+        },
+        {
+          title: "50元代金券",
+          img: "img/lottery_03.png",
+          p: 0.1,
+        },
+        {
+          title: "100元代金券",
+          img: "img/lottery_04.png",
+          p: 0.08,
+        },
+        {
+          title: "200元代金券",
+          img: "img/lottery_06.png",
+          p: 0.07,
+        },
+        {
+          title: "500元代金券",
+          img: "img/lottery_07.png",
+          p: 0.04,
+        },
+        {
+          title: "iphone13",
+          img: "img/lottery_08.png",
+          p: 0.01,
+        },
+      ];
+      // 文档解析完毕执行
+      //   $(function () {
+      arr
+        // .slice()
+        // .reverse()
+        .forEach((item, i) => {
+          $(".zp .circle").append(`
+                <div class="item">
+                    <div class="content">
+                        <div class="title">${item.title}</div>
+                        <img src="${item.img}">
+                    </div>
+                </div>
+                `);
+        });
+
+      var luckyNum;
+      $(".zp .circle").on("transitionend", function () {
+        if (luckyNum) {
+          console.log("end", luckyNum);
+          alert("恭喜抽中了:" + arr[luckyNum].title);
+          luckyNum = null;
+        } else {
+          alert("很遗憾,没有中奖,请再接再厉!");
+        }
+      });
+
+      $(".zp .btn").click(function () {
+        $(".zp .circle").css({
+          transform: `rotate(0deg)`,
+          transition: "none",
+        });
+        //随机0-1
+
+        xxx();
+      });
+      //   });
+
+      function xxx() {
+        setTimeout(() => {
+          var randomNum = Math.random();
+          var current = 0;
+          luckyNum = 0;
+          for (let i = 0; i < arr.length; i++) {
+            current += arr[i].p;
+            if (randomNum < current) {
+              luckyNum = i;
+              break;
+            }
+          }
+          //   luckyNum = n;
+          console.log("start", luckyNum);
+          // 旋转9圈
+          var rotateDeg = 360 * 9 + luckyNum * 45 + 22.5;
+          $(".zp .circle").css({
+            transition: "all 3s ease-in-out",
+            transform: `rotate(-${rotateDeg}deg)`,
+          });
+        }, 0);
+      }
+    </script>
+  </body>
+</html>

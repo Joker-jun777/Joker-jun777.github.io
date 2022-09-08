@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 330px;
+            padding: 15px 0;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .wrap .hint {
+            display: block;
+            width: 330px;
+            height: 30px;
+            border-radius: 2px;
+            box-shadow: rgb(0 0 0 / 30%) 0 0 3px 2px;
+            letter-spacing: 2px;
+            font-size: 1em;
+        }
+
+        .wrap ul.stage {
+            padding: 15px 0;
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            position: relative;
+        }
+
+        .wrap ul.stage li {
+            width: 100px;
+            height: 100px;
+            background-color: #36b8eb;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap ul.stage li:nth-child(4) {
+            position: absolute;
+            right: 0;
+            top: 125px;
+        }
+
+        .wrap ul.stage li:nth-child(5) {
+            position: absolute;
+            right: 0;
+            top: 235px;
+        }
+
+        .wrap ul.stage li:nth-child(6) {
+            position: absolute;
+            bottom: -94px;
+        }
+
+        .wrap ul.stage li:nth-child(7) {
+            position: absolute;
+            left: 0;
+            bottom: -94px;
+        }
+
+        .wrap ul.stage li:nth-child(8) {
+            position: absolute;
+            top: 125px;
+            left: 0;
+        }
+
+        .wrap ul.stage li:nth-child(9) {
+            background-color: #fb9742;
+            cursor: pointer;
+        }
+
+        .wrap ul.stage li.zhong {
+            background-color: #4e4e4e;
+        }
+
+        .wrap ul.stage span {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <span class="hint"></span>
+        <ul class="stage">
+            <li class="zhong"><span>手机</span></li>
+            <li><span>平板</span></li>
+            <li><span>电磁炉</span></li>
+            <li><span>洗衣机</span></li>
+            <li><span>衣柜</span></li>
+            <li><span>冰箱</span></li>
+            <li><span>电脑</span></li>
+            <li><span>电视</span></li>
+            <li><span>开始</span></li>
+        </ul>
+    </div>
+
+    <script>
+        var int = document.querySelector(".wrap .hint");
+        var lis = document.querySelectorAll(".stage li");
+
+        function start() {
+            lis.forEach(function (el, index) {
+                if (index != 0) {
+                    el.classList.remove("zhong");
+                }
+            });
+
+            int.innerText = " ";
+            lis[8].style.cursor = "not-allowed";
+            lis[8].onclick = null;
+
+            var num = 0;
+            var times = 0;
+            var number = Math.ceil(Math.random() * (Math.pow(3, 3) + 3 * 3));
+
+            var id = setInterval(function () {
+                num++;
+                times++;
+                if (num > 7) {
+                    num = 0;
+                    lis[0].classList.add("zhong");
+                    lis[7].classList.remove("zhong");
+                } else if (num == 0) {
+                    lis[num].classList.add("zhong");
+                    lis[7].classList.remove("zhong");
+                } else {
+                    lis[num].classList.add("zhong");
+                    lis[num - 1].classList.remove("zhong");
+                }
+
+                if (times > number) {
+                    lis[8].onclick = start;
+                    lis[8].style.cursor = "pointer";
+                    int.innerText = "恭喜您抽中了" + lis[num].innerText + "!!!";
+                    clearInterval(id);
+                }
+            }, 100)
+        }
+        lis[8].onclick = start;
+    </script>
+</body>
+
+</html>
