@@ -1,446 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+      crossorigin="anonymous"
+    />
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
-    </script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"
+    ></script>
     <style>
-        body {
-            padding: 0;
-            margin: 0;
-            background-color: rgb(108, 217, 212);
-        }
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: rgb(108, 217, 212);
+      }
 
-        h1 {
-            color: rgb(179, 54, 54);
-            font-weight: bold;
-            text-align: center;
-            letter-spacing: 2px;
-        }
+      h1 {
+        color: rgb(179, 54, 54);
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 2px;
+      }
 
-        h3 {
-            color: rgb(152, 52, 198);
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+      .row {
+        text-align: center;
+        padding: 15px;
+        margin: 0 15px;
+      }
 
-        .row {
-            text-align: center;
-            padding: 15px;
-            margin: 0 15px;
-        }
+      h3 {
+        color: rgb(152, 52, 198);
+        font-weight: bold;
+        text-align: left;
+        letter-spacing: 2px;
+        padding: 0 15px;
+      }
 
-        .anli a {
-            font-size: 24px;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: rgb(15, 67, 210);
-        }
+      .anli a {
+        font-size: 24px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        color: rgb(15, 67, 210);
+      }
 
-        .anli .backpho {
-            margin: 15px 0;
-            border-radius: 20px;
-            transform: scale(1);
-            transition: all .3s;
-        }
+      .anli .backpho {
+        margin: 15px 0;
+        transform: scale(1);
+        transition: all 0.3s;
+      }
 
-        .anli .backpho:hover {
-            transform: scale(1.1);
-        }
+      .anli .backpho:hover {
+        transform: scale(1.1);
+      }
 
-        .anli .jt .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/服装.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .jt .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/服装.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .jt .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/儿童.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .jt .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/儿童.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .bs .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/企业.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .bs .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/企业.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .bs .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/医美.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .bs .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/医美.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .xyx .topleft .backpho {
-            height: 300px;
-            background-image: url('./imgs/钢琴大师.png');
-            background-size: 80%;
-            background-position: center;
-        }
+      .anli .xyx .topleft .backpho {
+        height: 300px;
+        background-image: url("./imgs/钢琴大师.png");
+        background-size: 80%;
+        background-position: center;
+      }
 
-        .anli .xyx .topright .backpho {
-            height: 300px;
-            background-image: url('./imgs/别踩白块.png');
-            background-size: 70%;
-            background-position: top center;
-        }
+      .anli .xyx .topright .backpho {
+        height: 300px;
+        background-image: url("./imgs/别踩白块.png");
+        background-size: 70%;
+        background-position: top center;
+      }
 
-        .anli .xyx .botleft .backpho {
-            margin-top: 60px;
-            height: 300px;
-            background-image: url('./imgs/找色块.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .xyx .botleft .backpho {
+        margin-top: 60px;
+        height: 300px;
+        background-image: url("./imgs/找色块.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .xyx .botright .backpho {
-            margin-top: 60px;
-            height: 300px;
-            background-image: url('./imgs/记忆卡片.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .xyx .botright .backpho {
+        margin-top: 60px;
+        height: 300px;
+        background-image: url("./imgs/记忆卡片.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .lbt .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/360.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .lbt .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/360.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .lbt .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/无缝轮播图.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .lbt .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/无缝轮播图.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .lbt .lb .backpho {
-            height: 300px;
-            background-image: url('./imgs/堆叠轮播图.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .lbt .lb .backpho {
+        height: 300px;
+        background-image: url("./imgs/堆叠轮播图.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .cj .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/转盘抽奖.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .cj .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/转盘抽奖.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .cj .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/九宫格抽奖.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .cj .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/九宫格抽奖.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .fd .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/放大镜.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .fd .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/放大镜.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .fd .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/选项卡.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .fd .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/选项卡.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .sz .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/时钟.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .sz .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/海绵宝宝.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .sz .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/倒计时.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .sz .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/倒计时&时钟.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .aj .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/城市.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .aj .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/城市.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .aj .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/海绵宝宝.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .aj .bz .backpho {
+        height: 300px;
+        background-image: url("./imgs/B站漫画.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .aj .bz .backpho {
-            height: 300px;
-            background-image: url('./imgs/B站漫画.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .c3 .left .backpho {
+        height: 300px;
+        background-image: url("./imgs/爱心.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .c3 .left .backpho {
-            height: 300px;
-            background-image: url('./imgs/爱心.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .c3 .right .backpho {
+        height: 300px;
+        background-image: url("./imgs/柱子.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .c3 .right .backpho {
-            height: 300px;
-            background-image: url('./imgs/柱子.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .c3 .xz .backpho {
+        height: 300px;
+        background-image: url("./imgs/旋转.png");
+        background-size: cover;
+        background-position: center;
+      }
 
-        .anli .c3 .xz .backpho {
-            height: 300px;
-            background-image: url('./imgs/旋转.png');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .anli .c3 .jdt .backpho {
-            height: 300px;
-            background-image: url('./imgs/进度条.png');
-            background-size: cover;
-            background-position: center;
-        }
+      .anli .c3 .jdt .backpho {
+        height: 300px;
+        background-image: url("./imgs/进度条.png");
+        background-size: cover;
+        background-position: center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>作品集</h1>
     <div class="anli">
-        <div class="container">
-            <h3>静态页面</h3>
-            <div class="row jt">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./静态页面/服装定制/服装定制.html" target="_blank">服装定制网站</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./静态页面/儿童/HTML/xm3.html" target="_blank">儿童中心网站</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+      <div class="container">
+        <div class="row jt">
+          <h3>静态页面</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./静态页面/服装定制/服装定制.html" target="_blank"
+                >服装定制网站</a
+              >
             </div>
-
-
-            <h3>Bootstrap页面</h3>
-            <div class="row bs">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./Bootstrap页面/企业介绍-Bootstrap/企业介绍.html" target="_blank">企业介绍</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./Bootstrap页面/医美-Bootstrap/整形练习.html" target="_blank">医美网站</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./静态页面/儿童/HTML/xm3.html" target="_blank"
+                >儿童中心网站</a
+              >
             </div>
-
-
-            <h3>JS游戏</h3>
-            <div class="row xyx">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="topleft">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/钢琴大师/钢琴大师.html" target="_blank">钢琴大师</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="topright">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/别踩白块/别踩白块.html" target="_blank">别踩白块</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="botleft">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/找色块游戏/找色块游戏.html" target="_blank">找色块</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="botright">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/卡片记忆/卡片记忆.html" target="_blank">卡片记忆</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <h3>JS轮播图</h3>
-            <div class="row lbt">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/360浏览器页面/360页面.html" target="_blank">仿360浏览器页面</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/无缝轮播图/index.html" target="_blank">无缝轮播图</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="lb">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/堆叠轮播图/index.html" target="_blank">堆叠轮播图</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-            <h3>JS转盘抽奖</h3>
-            <div class="row cj">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/抽奖转盘/index.html" target="_blank">转盘抽奖</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/抽奖转盘/九宫格抽奖.html" target="_blank">九宫格抽奖</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <h3>JS放大镜&选项卡</h3>
-            <div class="row fd">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/放大镜/index.html" target="_blank">放大镜</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/选项卡/index.html" target="_blank">选项卡</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <h3>Jquery案例</h3>
-            <div class="row sz">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/时钟/index.html" target="_blank">时钟</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/倒计时/index.html" target="_blank">倒计时</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <h3>请求AJAX数据</h3>
-            <div class="row aj">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/城市三级联动/三级联动.html" target="_blank">城市三级联动</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/B站海绵宝宝视频/cs4-3.html" target="_blank">B站海绵宝宝视频</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="bz">
-                        <div class="backpho"></div>
-                        <a href="./JS案例/B站漫画/index.html" target="_blank">B站漫画</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <h3>CSS3动画效果</h3>
-            <div class="row c3">
-                <div class="clearfix"></div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="left">
-                        <div class="backpho"></div>
-                        <a href="./CSS3动画/3D爱心/heart.html" target="_blank">3D爱心</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="right">
-                        <div class="backpho"></div>
-                        <a href="./CSS3动画/3D柱子/3d-柱子.html" target="_blank">3D柱子</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="xz">
-                        <div class="backpho"></div>
-                        <a href="./CSS3动画/Loading效果/loading彩色旋转.html" target="_blank">Loading效果</a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="jdt">
-                        <div class="backpho"></div>
-                        <a href="./CSS3动画/进度条效果/进度条.html" target="_blank">进度条效果</a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+          </div>
+          <div class="clearfix"></div>
         </div>
-    </div>
-</body>
 
+        <div class="row bs">
+          <h3>Bootstrap页面</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a
+                href="./Bootstrap页面/企业介绍-Bootstrap/企业介绍.html"
+                target="_blank"
+                >企业介绍</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="right">
+              <div class="backpho"></div>
+              <a
+                href="./Bootstrap页面/医美-Bootstrap/整形练习.html"
+                target="_blank"
+                >医美网站</a
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row xyx">
+          <h3>JS游戏</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="topleft">
+              <div class="backpho"></div>
+              <a href="./JS案例/钢琴大师/钢琴大师.html" target="_blank"
+                >钢琴大师</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="topright">
+              <div class="backpho"></div>
+              <a href="./JS案例/别踩白块/别踩白块.html" target="_blank"
+                >别踩白块</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="botleft">
+              <div class="backpho"></div>
+              <a href="./JS案例/找色块游戏/找色块游戏.html" target="_blank"
+                >找色块</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="botright">
+              <div class="backpho"></div>
+              <a href="./JS案例/卡片记忆/卡片记忆.html" target="_blank"
+                >卡片记忆</a
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row lbt">
+          <h3>JS轮播图</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./JS案例/360浏览器页面/360页面.html" target="_blank"
+                >仿360浏览器页面</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./JS案例/无缝轮播图/index.html" target="_blank"
+                >无缝轮播图</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <div class="lb">
+              <div class="backpho"></div>
+              <a href="./JS案例/堆叠轮播图/index.html" target="_blank"
+                >堆叠轮播图</a
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row cj">
+          <h3>JS转盘抽奖</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./JS案例/抽奖转盘/index.html" target="_blank"
+                >转盘抽奖</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./JS案例/抽奖转盘/九宫格抽奖.html" target="_blank"
+                >九宫格抽奖</a
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row fd">
+          <h3>JS放大镜&选项卡</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./JS案例/放大镜/index.html" target="_blank">放大镜</a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./JS案例/选项卡/index.html" target="_blank">选项卡</a>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row sz">
+          <h3>Jquery案例</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./JS案例/B站海绵宝宝视频/cs4-3.html" target="_blank"
+                >B站海绵宝宝视频</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./JS案例/时钟/时钟.html" target="_blank">时钟&倒计时</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row aj">
+          <h3>请求AJAX数据</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./JS案例/城市三级联动/三级联动.html" target="_blank"
+                >城市三级联动</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="bz">
+              <div class="backpho"></div>
+              <a href="./JS案例/B站漫画/index.html" target="_blank">B站漫画</a>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="row c3">
+          <h3>CSS3动画效果</h3>
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="left">
+              <div class="backpho"></div>
+              <a href="./CSS3动画/3D爱心/heart.html" target="_blank">3D爱心</a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="right">
+              <div class="backpho"></div>
+              <a href="./CSS3动画/3D柱子/3d-柱子.html" target="_blank"
+                >3D柱子</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="xz">
+              <div class="backpho"></div>
+              <a
+                href="./CSS3动画/Loading效果/loading彩色旋转.html"
+                target="_blank"
+                >Loading效果</a
+              >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <div class="jdt">
+              <div class="backpho"></div>
+              <a href="./CSS3动画/进度条效果/进度条.html" target="_blank"
+                >进度条效果</a
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
